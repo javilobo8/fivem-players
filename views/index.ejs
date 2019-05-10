@@ -103,9 +103,10 @@
             document.getElementById('audio').innerHTML = `
               <source src="${beepSrc}" type="audio/mpeg" />
             `;
+            console.log('drring drring');
             setTimeout(() => {
               document.getElementById('audio').innerHTML = '';
-            }, 1000);
+            }, 5000);
           }
         }
 
