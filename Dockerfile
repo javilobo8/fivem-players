@@ -1,5 +1,7 @@
 FROM node:8-slim
 
+ARG SOCKETIO_HOST="/"
+
 WORKDIR /opt/app
 
 COPY package*.json ./
@@ -10,9 +12,9 @@ RUN npm install --prefix client
 
 COPY . ./
 
-# add GENERATE_SOURCE_MAP=false
 RUN npm run build && \
-  npm run build --prefix client && \
+  echo "REACT_APP_SOCKETIO_HOST=$SOCKETIO_HOST" > client/.env && cat client/.env && \
+  GENERATE_SOURCE_MAP=false npm run build --prefix client && \
   rm -rf client/node_modules
 
 EXPOSE 8000

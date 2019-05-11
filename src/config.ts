@@ -32,7 +32,7 @@ const config: IConfig = {
   port: tryParse(process.env.PORT, Number),
   refreshInterval: tryParse(process.env.REFRESH_INTERVAL, Number),
   maxPlayers: tryParse(process.env.MAX_PLAYERS, Number),
-  socketHost: tryParse(process.env.SOCKET_HOST, String),
+  socketHost: tryParse(process.env.SOCKETIO_HOST, String),
 };
 
 export default mergeConfig(defaultConfig, config) as IConfig;
