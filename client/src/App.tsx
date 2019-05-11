@@ -7,7 +7,7 @@ import { IServer } from './types';
 import io from 'socket.io-client';
 import useLocalStorage from './hooks/useLocalStorage';
 
-const SOCKET_HOST = process.env.REACT_APP_SOCKET_HOST || 'http://localhost:8000';
+const SOCKET_HOST = process.env.REACT_APP_SOCKETIO_HOST || 'http://localhost:8000';
 
 const MAX_PLAYERS = 32;
 
