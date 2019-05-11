@@ -1,6 +1,7 @@
 export interface IServerElement {
   host: string;
   name: string;
+  playerLeft?: boolean;
   players?: number;
 }
 

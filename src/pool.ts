@@ -68,10 +68,25 @@ export default class Pool {
         const jsonData = JSON.stringify(data);
 
         if (this.prevData !== jsonData) {
-          this.currentData = data;
+          const newData = [...data];
+
+          data.forEach((item, index) => {
+            const currentItem = this.currentData.find((server) => server.name === item.name);
+
+            if (currentItem && typeof currentItem.players === 'number') {
+              if (currentItem.players >= config.maxPlayers && item.players < config.maxPlayers) {
+                newData[index].playerLeft = true;
+              } else {
+                newData[index].playerLeft = false;
+              }
+            }
+          });
+
+          this.currentData = newData;
           this.prevData = jsonData;
-          this.io.emit('update', data);
-          console.log('Data updated!');
+
+          console.log('Data updated!', this.currentData);
+          this.io.emit('update', this.currentData);
         }
       });
   }

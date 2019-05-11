@@ -12,19 +12,11 @@ import SERVERS from './servers.json';
 const app: Express = express();
 const server: http.Server = new http.Server(app);
 
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'ejs');
-
 app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.render('index', {
-    host: config.socketHost,
-    maxPlayers: config.maxPlayers,
-  });
-});
+app.use('/', express.static(path.join(__dirname, '../client/build')));
 
 server.listen(config.port, () => {
   console.log(`Listening on port ${config.port}`);
