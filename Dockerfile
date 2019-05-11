@@ -13,7 +13,7 @@ RUN npm install --prefix client
 COPY . ./
 
 RUN npm run build && \
-  echo "REACT_APP_SOCKETIO_HOST=$SOCKETIO_HOST" > client/.env && cat client/.env && \
+  echo "REACT_APP_SOCKETIO_HOST=$SOCKETIO_HOST" > client/.env && \
   GENERATE_SOURCE_MAP=false npm run build --prefix client && \
   rm -rf client/node_modules
 
