@@ -19,7 +19,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "socket.io": "^2.2.0",
     "typescript": "^3.4.5"
   },
